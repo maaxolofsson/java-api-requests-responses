@@ -22,7 +22,7 @@ class Student {
     }
 
     public void setLastName(String newLastName) {
-        this.firstName = newLastName;
+        this.lastName = newLastName;
     }
 
 }
