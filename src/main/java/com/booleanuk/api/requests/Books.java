@@ -32,4 +32,20 @@ public class Books {
         return null;
     }
 
+    @PutMapping("{id}")
+    @ResponseStatus(HttpStatus.CREATED) // CREATED = 201 status code
+    public Book update(@PathVariable int id, @RequestBody Book updatedBook) {
+        for (int i = 0; i < this.books.size(); ++i) {
+            Book currentBook = this.books.get(i);
+            if (currentBook.getId() == id) {
+                currentBook.setTitle(updatedBook.getTitle());
+                currentBook.setNumPages(updatedBook.getNumPages());
+                currentBook.setAuthor(updatedBook.getAuthor());
+                currentBook.setGenre(updatedBook.getGenre());
+                return currentBook;
+            }
+        }
+        return null;
+    }
+
 }
