@@ -33,4 +33,18 @@ public class Students {
         return null;
     }
 
+    @PutMapping("{name}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Student update(@PathVariable String name, @RequestBody Student student) {
+        for (int i = 0; i < this.students.size(); ++i) {
+            if (this.students.get(i).getFirstName().equals(name)) {
+                this.students.get(i).setFirstName(student.getFirstName());
+                this.students.get(i).setLastName(student.getLastName());
+                return this.students.get(i);
+            }
+        }
+
+        return null;
+    }
+
 }
