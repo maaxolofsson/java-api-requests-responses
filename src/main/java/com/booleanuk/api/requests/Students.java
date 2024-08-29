@@ -9,7 +9,7 @@ import java.util.List;
 @RestController
 @RequestMapping("students")
 public class Students {
-    private List<Student> students = new ArrayList<>(){{
+    private List<Student> students = new ArrayList<>() {{
         add(new Student("Nathan", "King"));
         add(new Student("Dave", "Ames"));
     }};
@@ -26,4 +26,11 @@ public class Students {
     public List<Student> getAll() {
         return this.students;
     }
+
+    @GetMapping("{name}")
+    public Student getStudent(@PathVariable String name) {
+        for (Student s : this.students) if (s.getFirstName().equals(name)) return s;
+        return null;
+    }
+
 }
