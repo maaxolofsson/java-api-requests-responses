@@ -27,4 +27,31 @@ public class Languages {
         return this.languages;
     }
 
+    @GetMapping("{name}")
+    public Language get(@PathVariable String name) {
+        for (int i = 0; i < this.languages.size(); ++i) {
+            if (this.languages.get(i).getName().equals(name)) return this.languages.get(i);
+        }
+        return null;
+    }
+
+    @PutMapping("{name}")
+    public Language update(@PathVariable String name, @RequestBody Language language) {
+        for (int i = 0; i < this.languages.size(); ++i) {
+            if (this.languages.get(i).getName().equals(name)) {
+                this.languages.get(i).setName(language.getName());
+                return this.languages.get(i);
+            }
+        }
+        return null;
+    }
+
+    @DeleteMapping("{name}")
+    public Language delete(@PathVariable String name) {
+        for (int i = 0; i < this.languages.size(); ++i) {
+            if (this.languages.get(i).getName().equals(name)) return this.languages.remove(i);
+        }
+        return null;
+    }
+
 }
