@@ -48,4 +48,12 @@ public class Books {
         return null;
     }
 
+    @DeleteMapping("{id}")
+    public Book delete(@PathVariable int id) {
+        for (int i = 0; i < this.books.size(); ++i) {
+            if (this.books.get(i).getId() == id) return this.books.remove(i);
+        }
+        return null;
+    }
+
 }
