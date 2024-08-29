@@ -2,6 +2,10 @@ package com.booleanuk.api.requests;
 
 public class Book {
 
+    public static int idManager = 0;
+
+    private int id; // "internal" id
+
     private String title;
     private int numPages;
     private String author;
@@ -14,7 +18,16 @@ public class Book {
         this.genre = genre;
     }
 
-    public Book(){}
+    public Book() {
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
