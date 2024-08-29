@@ -26,4 +26,10 @@ public class Books {
         return book;
     }
 
+    @GetMapping("{id}")
+    public Book get(@PathVariable int id) {
+        for (Book b : this.books) if (b.getId() == id) return b;
+        return null;
+    }
+
 }
