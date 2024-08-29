@@ -47,4 +47,12 @@ public class Students {
         return null;
     }
 
+    @DeleteMapping("{name}")
+    public Student delete(@PathVariable String name) {
+        for (int i = 0; i < this.students.size(); ++i) {
+            if (this.students.get(i).getFirstName().equals(name)) return this.students.remove(i);
+        }
+        return null;
+    }
+
 }
